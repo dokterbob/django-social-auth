@@ -72,7 +72,8 @@ def dsa_view(redirect_name=None):
                 logger.error(unicode(e), exc_info=True,
                              extra=dict(request=request))
 
-                # Why!?
+                # Why!? Don't we mean unicode(e) - otherwise this is
+                # bound to cause some problems.
                 msg = str(e)
 
                 if 'django.contrib.messages' in settings.INSTALLED_APPS:

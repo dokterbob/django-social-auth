@@ -267,8 +267,8 @@ class SocialAuthBackend(ModelBackend):
 
         Riase DoesNotExist exception if no entry.
         """
-        return UserSocialAuth.objects.select_related('user')\
-                                     .get(provider=self.name, uid=uid)
+        qs = UserSocialAuth.objects.select_related('user')
+        return qs.get(provider=self.name, uid=uid)
 
     def get_user_id(self, details, response):
         """Must return a unique ID from values returned on details"""
